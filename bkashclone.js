@@ -1,5 +1,5 @@
 import { errorMessage } from "./constant.js";
-import {loadingHtmlText} from "./htmltext.js";
+import { loadingHtmlText } from "./htmltext.js";
 let validationResult = false;
 const form = document.querySelector("form");
 form.addEventListener("submit", formGetUserDataOutput);
@@ -24,7 +24,14 @@ function formGetUserDataOutput(e) {
   console.log(validationResult, user);
 }
 function setTimeoutCall(username) {
+  let result = false;
   setTimeout(() => {
     form.innerHTML = loadingHtmlText(username);
+    result = true;
   }, 1500);
+  if (result) {
+    setTimeout(() => {
+      window.location.assign("./Home.html");
+    }, 3000);
+  }
 }
