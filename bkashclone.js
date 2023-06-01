@@ -31,7 +31,7 @@ function setTimeoutCall(username) {
   }, 1500);
   if (result) {
     setTimeout(() => {
-      window.location.assign("./Home.html");
+      window.location.href(`./Home.html?user=${username}`);
     }, 3000);
   }
 }
