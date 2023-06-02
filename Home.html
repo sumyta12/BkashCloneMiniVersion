@@ -9,16 +9,70 @@
   </head>
   <body>
     <section class="bg-[#e2136e]">
-      <div class="container mx-auto  px-4 pt-3 pb-3">
-        <div class="flex">
-          <div>Username</div>
+      <div class="container mx-auto px-4 pt-3 pb-3">
+        <div class="flex mt-4 mb-4">
+          <div>
+            <h1>Name of user</h1>
+            <span class="main-balance">300</span>
+          </div>
           <div></div>
           <div></div>
         </div>
       </div>
     </section>
     <section>
-      <h1>this is bkash home page</h1>
+      <div class="container mx-auto px-4 pt-3 pb-3">
+        <div class="flex">
+          <div
+            class="w-64 h-40 mt-8 shadow-lg shadow-[#e2136e]-500/50 flex flex-col justify-center items-center"
+            id="item-1"
+            data-id="1">
+            <div>
+              <img
+                class="w-24"
+                src="https://www.bkash.com/uploaded_contents/services/icons/05-add-money_1666160847291.webp"
+                alt="addmoneypng" />
+            </div>
+            <div class="mb-8">
+              <p>অ্যাড মানি</p>
+            </div>
+          </div>
+          <!--  -->
+          <div
+            class="w-64 h-40 mt-8 shadow-lg shadow-[#e2136e]-500/50 flex flex-col justify-center items-center"
+            id="item-2"
+            data-id="2">
+            <div>
+              <img
+                class="w-24"
+                src="https://www.bkash.com/uploaded_contents/services/icons/03-cash-out_1666158620022.webp"
+                alt="addmoneypng" />
+            </div>
+            <div class="mb-8">
+              <p>ক্যাশ আউট</p>
+            </div>
+          </div>
+          <!--  -->
+        </div>
+      </div>
     </section>
+    <section class="modal-class">
+      <div
+        class="w-80 py-20 flex flex-col items-center shadow-lg shadow-[#e2136e]-500/50">
+        <p class="pb-2">This is modal</p>
+        <input
+          type="text"
+          class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-4/5 rounded-md sm:text-sm focus:ring-1"
+          placeholder="Give Any Valid Number" />
+          <input
+          type="password"
+          class="hidden mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-4/5 rounded-md sm:text-sm focus:ring-1"
+          placeholder="Give Pin Number" />
+        <button class="rounded-full mt-4 bg-[#e2136e] py-2 px-14 text-white">
+          Submit
+        </button>
+      </div>
+    </section>
+    <script src="./home.js"></script>
   </body>
 </html>

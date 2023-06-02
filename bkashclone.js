@@ -28,10 +28,14 @@ function setTimeoutCall(username) {
   setTimeout(() => {
     form.innerHTML = loadingHtmlText(username);
     result = true;
+
+    if (result) {
+      console.log(result);
+      setTimeout(() => {
+        window.location.assign("./home.html");
+      }, 2000);
+    }
+
   }, 1500);
-  if (result) {
-    setTimeout(() => {
-      window.location.assign(`./Home.html`);
-    }, 3000);
-  }
+  
 }
