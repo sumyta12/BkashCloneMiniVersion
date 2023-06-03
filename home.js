@@ -1,35 +1,61 @@
+import { errorMessage } from "./constant.js";
 const mainbalance = document.querySelector(".main-balance");
-const modalclass = document.querySelector(".modal-class button");
+const fullModal = document.querySelector(".modal-class");
+const modalbtn = document.querySelector("button");
+const modalptag = document.querySelector(".modal-class p");
 
 let totalAmount = parseInt(mainbalance.textContent);
+let total = totalAmount;
 const pinNumber = "1234";
+let remain = false;
 
 document.addEventListener("click", (e) => {
-  const datasetId =
+  let datasetId =
     e.target.dataset.id || e.target.parentElement.parentElement.dataset.id;
+
   if (datasetId === "1") {
-    ModalChangeFunctionality(datasetId);
+    ModaltagtextContextChange(datasetId);
   } else if (datasetId === "2") {
-    ModalChangeFunctionality(datasetId);
+    ModaltagtextContextChange(datasetId);
   }
 });
-function ModalChangeFunctionality(id) {
-  document.querySelector(".modal-class p").textContent = document.querySelector(
-    `#item-${id} p`
-  ).textContent;
-  modalclass.addEventListener("click", (e) => {
-    const inputtext = e.target.parentElement.children[1].tagName;
-    const input = parseInt(document.querySelector(`${inputtext}`).value);
-    let total = totalAmount;
-    if (id === "1") {
-      total += input;
-      console.log(total);
-    }
-    if (id === "2") {
-      if (total > input) {
-        total -= input;
-      }
-    }
-    mainbalance.textContent = total;
-  });
+
+function ModaltagtextContextChange(id) {
+  const itemId = document.querySelector(`#item-${id} p`);
+  modalptag.textContent = ` Hey ` + itemId.textContent;
+  modalbtn.textContent = itemId.textContent;
+
+  fullModal.id = `modalItem-${id}`;
+}
+
+modalbtn.addEventListener("click", (e) => {
+  const modalp = modalptag.textContent;
+  const inputValue = document.querySelector("input[type='text']").value;
+  const id = e.target.parentElement.parentElement.id.slice(-1);
+  if (id) {
+    const input = inputValueCheck(inputValue);
+    const amountReturen = addSubstractionOutput(id, input);
+    totalAmountUpdate(amountReturen);
+  }
+});
+function addSubstractionOutput(id, input) {
+  if (id === "1") {
+    return (total += input);
+  } else {
+    return (total -= input);
+  }
+}
+function inputValueCheck(number) {
+  const heading = document.querySelector(".modal-class h3");
+  if (number.trim() === "") {
+    errorMessage(heading, "You must specify a number");
+  } else {
+    const input = parseInt(number);
+    errorMessage(heading, "");
+    return input;
+  }
+}
+
+function totalAmountUpdate(total) {
+  return (mainbalance.textContent = total);
 }
