@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bkash Home page</title>
+    <script
+      src="https://kit.fontawesome.com/31767f5f0b.js"
+      crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
@@ -39,7 +42,7 @@
           </div>
           <!--  -->
           <div
-            class="w-64 h-40 mt-8 shadow-lg shadow-[#e2136e]-500/50 flex flex-col justify-center items-center"
+            class="cursor-not-allowed w-64 h-40 mt-8 shadow-lg shadow-[#e2136e]-500/50 flex flex-col justify-center items-center"
             id="item-2"
             data-id="2">
             <div>
@@ -56,19 +59,24 @@
         </div>
       </div>
     </section>
-    <section  class="modal-class">
+    <section class="modal-class">
+
       <div
         class="w-80 py-20 flex flex-col items-center shadow-lg shadow-[#e2136e]-500/50">
+        <span class="cross">❌</span>
         <p class="pb-2">This is modal</p>
         <input
           type="text"
           class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-4/5 rounded-md sm:text-sm focus:ring-1"
           placeholder="Give Any Valid Number" />
-          <input
+        <input
           type="password"
           class="hidden mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-4/5 rounded-md sm:text-sm focus:ring-1"
           placeholder="Give Pin Number" />
-          <h3></h3>
+        <h3></h3>
+
+        <i class="hidden fa-solid fa-circle-check text-8xl text-[#368900]"></i>
+
         <button class="rounded-full mt-4 bg-[#e2136e] py-2 px-14 text-white">
           Submit
         </button>
