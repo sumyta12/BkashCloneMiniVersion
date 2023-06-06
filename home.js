@@ -1,4 +1,4 @@
-import { errorMessage } from "./constant.js";
+import { errorMessage, dateTimeReturen } from "./constant.js";
 import UserDetails from "./UserDetails.js";
 const mainbalance = document.querySelector(".main-balance");
 const fullModal = document.querySelector(".modal-class");
@@ -17,9 +17,52 @@ function displayOutputpinReturn() {
 
 displayOutputpinReturn();
 
+let btntext = ``;
 let total = displayOutputpinReturn()[1];
 let track = false;
+const notificationArr = [];
+const displayarr = [
+  {
+    date: "6/6/2023",
+    time: "6:42:44 PM",
+    taka: 45,
+    text: "অ্যাড মানি",
+    transictionId: 1,
+  },
+];
+displayOneNotifyItem(displayarr[0]);
+displayOneNotifyItem(displayarr[0]);
+function displayOneNotifyItem(item) {
+  const getdiv = document.querySelector("#notification-slider").children;
+  let texthtml = ``;
+  const {date , time , taka ,text , transictionId} = item;
+   texthtml = `<div class="w-64 pt-2  bg-white mt-2 mb-2"
+                id="delete-1"
+                data-deleteId="1">
+                <div>
+                <h1>${text}</h1>
+                </div>
+                <div>
+                    <div class="flex justify-between">
+                    <div><h6>${taka}</h6></div>
+                    <div>
+                    <p>${date}</p>
+                    <span>${time}</span>
+                    </div>
+                    </div>
 
+                    <div class="pb-2">
+                    <p>${transictionId}</p>
+                    </div>
+                </div>
+                </div>`;
+
+return (getdiv[0].innerHTML += texthtml);
+}
+
+// function notifactionDisplayOutput(item){
+
+// }
 document.addEventListener("click", (e) => {
   let datasetId =
     e.target.dataset.id || e.target.parentElement.parentElement.dataset.id;
@@ -45,6 +88,7 @@ function ModaltagtextContextChange(id) {
   const itemId = document.querySelector(`#item-${id} p`);
   modalptag.textContent = ` Hey ` + itemId.textContent;
   modalbtn.textContent = itemId.textContent;
+  btntext = itemId.textContent;
   fullModal.id = `modalItem-${id}`;
   track = true;
 }
@@ -69,7 +113,9 @@ function buttonActivityChange(e) {
       if (inputpin.value === displayOutputpinReturn()[0]) {
         inputValue.value = ``;
         textContentChange("none", "none", ``, ``);
+
         modalptag.textContent = ``;
+
         document.querySelector("i").style.display = "block";
         parent.setAttribute("style", "cursor:pointer ;");
         for (let child of parent.children) {
@@ -77,6 +123,8 @@ function buttonActivityChange(e) {
         }
         modalbtn.setAttribute("style", "background: transparent");
         const amountReturen = addSubstractionOutput(id, input);
+
+        notficationArrayCreate(input);
 
         totalAmountUpdate(amountReturen);
       } else {
@@ -89,6 +137,16 @@ function buttonActivityChange(e) {
     }
   }
 }
+function notficationArrayCreate(input) {
+  notificationArr.unshift({
+    date: dateTimeReturen().date,
+    time: dateTimeReturen().timedata,
+    taka: input,
+    text: btntext,
+    transictionId: notificationArr.length + 1,
+  });
+  console.log(notificationArr);
+}
 function textContentChange(inputstyle, pinstyle, text, modalbtntext) {
   inputValue.style.display = inputstyle;
   inputpin.style.display = pinstyle;
@@ -97,12 +155,13 @@ function textContentChange(inputstyle, pinstyle, text, modalbtntext) {
   return true;
 }
 
-function addSubstractionOutput(id, input) {
-  if (id === "1") {
+function addSubstractionOutput(option, input) {
+  if (option === "1") {
     return (total += input);
-  } else if (id === "2") {
+  } else if (option === "2") {
     if (total < input) {
-      return 0;
+      errorMessage(heading, "You have not enough money");
+      //   return 0;
     } else {
       return (total -= input);
     }
