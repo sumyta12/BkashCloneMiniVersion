@@ -18,10 +18,10 @@ function formGetUserDataOutput(e) {
     validationResult = true;
     if (validationResult && user.username && user.password) {
       errorMessage(e.target.children[2], "");
-      // setTimeoutCall(user.username);
+      setTimeoutCall(user.username);
     }
   }
-   localStorage.setItem('username', JSON.stringify(user.username));
+  localStorage.setItem("username", JSON.stringify(user.username));
 }
 function setTimeoutCall(username) {
   let result = false;
@@ -35,7 +35,5 @@ function setTimeoutCall(username) {
         window.location.assign("./home.html");
       }, 2000);
     }
-
   }, 1500);
-  
 }
