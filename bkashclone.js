@@ -18,10 +18,10 @@ function formGetUserDataOutput(e) {
     validationResult = true;
     if (validationResult && user.username && user.password) {
       errorMessage(e.target.children[2], "");
-      setTimeoutCall(user.username);
+      // setTimeoutCall(user.username);
     }
   }
-  console.log(validationResult, user);
+   localStorage.setItem('username', JSON.stringify(user.username));
 }
 function setTimeoutCall(username) {
   let result = false;

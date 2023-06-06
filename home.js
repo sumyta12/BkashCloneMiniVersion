@@ -1,4 +1,5 @@
 import { errorMessage } from "./constant.js";
+import UserDetails from "./UserDetails.js";
 const mainbalance = document.querySelector(".main-balance");
 const fullModal = document.querySelector(".modal-class");
 const modalbtn = document.querySelector("button");
@@ -7,11 +8,16 @@ const heading = document.querySelector(".modal-class h3");
 const inputpin = document.querySelector("input[type='password']");
 const inputValue = document.querySelector("input[type='text']");
 
-inputpin.style.display = "none";
+function displayOutputpinReturn() {
+  inputpin.style.display = "none";
+  let totalAmount = displayOutput()[0];
+  const pinNumber = displayOutput()[1];
+  return [pinNumber, totalAmount];
+}
 
-let totalAmount = parseInt(mainbalance.textContent);
-let total = totalAmount;
-const pinNumber = "1234";
+displayOutputpinReturn();
+
+let total = displayOutputpinReturn()[1];
 let track = false;
 
 document.addEventListener("click", (e) => {
@@ -35,12 +41,14 @@ document.addEventListener("click", (e) => {
 });
 
 function ModaltagtextContextChange(id) {
+  inputValue.value = ``;
   const itemId = document.querySelector(`#item-${id} p`);
   modalptag.textContent = ` Hey ` + itemId.textContent;
   modalbtn.textContent = itemId.textContent;
   fullModal.id = `modalItem-${id}`;
   track = true;
 }
+
 function buttonActivityChange(e) {
   track = false;
   const id = e.target.parentElement.parentElement.id.slice(-1);
@@ -56,9 +64,9 @@ function buttonActivityChange(e) {
     }
 
     textContentChange("none", "block", `Give Your Pin Number`, "proceesing");
-    inputpin.style.display = "block";
+
     if (inputpin.value) {
-      if (inputpin.value === pinNumber) {
+      if (inputpin.value === displayOutputpinReturn()[0]) {
         inputValue.value = ``;
         textContentChange("none", "none", ``, ``);
         modalptag.textContent = ``;
@@ -71,11 +79,12 @@ function buttonActivityChange(e) {
         const amountReturen = addSubstractionOutput(id, input);
 
         totalAmountUpdate(amountReturen);
-
-        track = false;
       } else {
+        inputpin.style.display = "block";
+        totalAmountUpdate(total);
         errorMessage(heading, "Your Password is incorrect  Try again!");
       }
+
       inputpin.value = ``;
     }
   }
@@ -92,7 +101,6 @@ function addSubstractionOutput(id, input) {
   if (id === "1") {
     return (total += input);
   } else if (id === "2") {
-    // console.log(total, input, total > input);
     if (total < input) {
       return 0;
     } else {
@@ -121,4 +129,31 @@ function inputValueCheck(id, number) {
 
 function totalAmountUpdate(total) {
   return (mainbalance.textContent = total);
+}
+
+function getAccurateUser() {
+  const user = JSON.parse(localStorage.getItem("username"));
+  const userResult = user === null ? [] : user;
+
+  return UserDetails.filter((userinfo) => userinfo.email === userResult).map(
+    (user) => {
+      return {
+        username: user.username,
+        balance: user.balance,
+        password: user.password,
+        pin: user.pinNumber,
+      };
+    }
+  )[0];
+}
+
+function displayOutput() {
+  const userData = getAccurateUser();
+  const nameofuser = document.querySelector(".name-of-user");
+  const mainbalance = document.querySelector(".main-balance");
+
+  nameofuser.textContent = userData.username;
+  mainbalance.textContent = userData.balance;
+
+  return [parseInt(userData.balance), userData.pin];
 }
