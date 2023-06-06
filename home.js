@@ -21,24 +21,13 @@ let btntext = ``;
 let total = displayOutputpinReturn()[1];
 let track = false;
 const notificationArr = [];
-const displayarr = [
-  {
-    date: "6/6/2023",
-    time: "6:42:44 PM",
-    taka: 45,
-    text: "অ্যাড মানি",
-    transictionId: 1,
-  },
-];
-displayOneNotifyItem(displayarr[0]);
-displayOneNotifyItem(displayarr[0]);
+
 function displayOneNotifyItem(item) {
-  const getdiv = document.querySelector("#notification-slider").children;
   let texthtml = ``;
-  const {date , time , taka ,text , transictionId} = item;
-   texthtml = `<div class="w-64 pt-2  bg-white mt-2 mb-2"
-                id="delete-1"
-                data-deleteId="1">
+  const { date, time, taka, text, transictionId } = item;
+  texthtml = `<div class="w-64 pt-2  bg-white mt-2 mb-2"
+                id="delete-${transictionId}"
+                data-deleteId="${transictionId}">
                 <div>
                 <h1>${text}</h1>
                 </div>
@@ -52,17 +41,23 @@ function displayOneNotifyItem(item) {
                     </div>
 
                     <div class="pb-2">
-                    <p>${transictionId}</p>
+                    <p>Transaction ID : ${transictionId}</p>
                     </div>
                 </div>
                 </div>`;
 
-return (getdiv[0].innerHTML += texthtml);
+  return texthtml;
 }
 
-// function notifactionDisplayOutput(item){
+function notifactionDisplayOutput(displayarr) {
+  let text = ``;
+  for (let item of displayarr) {
+    text += displayOneNotifyItem(item);
+  }
+  document.querySelector("#notification-slider").children[0].innerHTML =
+    `<h1 class="text-center">Notification</h1>` + text;
+}
 
-// }
 document.addEventListener("click", (e) => {
   let datasetId =
     e.target.dataset.id || e.target.parentElement.parentElement.dataset.id;
@@ -125,6 +120,7 @@ function buttonActivityChange(e) {
         const amountReturen = addSubstractionOutput(id, input);
 
         notficationArrayCreate(input);
+        notifactionDisplayOutput(notificationArr);
 
         totalAmountUpdate(amountReturen);
       } else {
@@ -138,14 +134,13 @@ function buttonActivityChange(e) {
   }
 }
 function notficationArrayCreate(input) {
-  notificationArr.unshift({
+  return notificationArr.unshift({
     date: dateTimeReturen().date,
     time: dateTimeReturen().timedata,
     taka: input,
     text: btntext,
     transictionId: notificationArr.length + 1,
   });
-  console.log(notificationArr);
 }
 function textContentChange(inputstyle, pinstyle, text, modalbtntext) {
   inputValue.style.display = inputstyle;
