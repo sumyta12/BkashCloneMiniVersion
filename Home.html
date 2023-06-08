@@ -10,16 +10,37 @@
       crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <section class="bg-[#e2136e] relative">
+  <!-- bg-[url('/img/hero-pattern.svg')] bg-[#0B0D17]-->
+  <body class="bg-[url('/Bkash/pictures/background-technology-desktop.jpg')]">
+    <section class="relative">
       <div class="container mx-auto px-4 pt-3 pb-3">
         <div class="flex justify-between mt-4 mb-4">
           <div>
-            <h1 class="name-of-user">Name of user</h1>
-            <span class="main-balance">300</span>
+            <h1
+              class="name-of-user text-white"
+              style="
+                font-family: 'Bellefair', serif;
+                font-weight: 300;
+                font-size: 32px;
+              ">
+              Name of user
+            </h1>
+            <span class="main-balance text-white">300</span>
           </div>
-          <div></div>
-          <div class="w-10">
+          <div
+            class="rounded-lg bg-white"
+            style="display: flex; justify-content: center; align-items: center">
+            <p
+              class="text-black level-el py-0 px-2"
+              style="
+                font-family: 'Bellefair', serif;
+                font-weight: 300;
+                font-size: 22px;
+              ">
+              🔒 Unlock Level
+            </p>
+          </div>
+          <div class="w-10 bird-click-notification">
             <img
               src="https://www.bkash.com/images/bkash_grey_thumbnail.svg"
               alt="bkashimage" />
@@ -27,49 +48,145 @@
         </div>
       </div>
     </section>
-    <section id="notification-slider">
-       <div class="w-64 h-screen bg-slate-200 absolute right-[0] z-[100]">
-        <h1>this is notifaction</h1>
-       </div> 
+    <section
+      id="notification-slider"
+      class="hidden"
+      style="
+        position: absolute;
+        top: 81px;
+        right: 0;
+        z-index: 999;
+        background-color: white;
+      ">
+      <div
+        class="rounded-tl-lg w-64 h-full bg-slate-200 absolute right-[0] z-[100]">
+        <h1 class="text-center text-white">No Notification</h1>
+      </div>
     </section>
     <section>
       <div class="container mx-auto px-4 pt-3 pb-3">
-        <div class="flex">
+        <div class="flex gap-x-2.5">
           <div
-            class="w-64 h-40 mt-8 shadow-lg shadow-[#e2136e]-500/50 flex flex-col justify-center items-center"
-            id="item-1"
-            data-id="1">
-            <div>
-              <img
-                class="w-24"
-                src="https://www.bkash.com/uploaded_contents/services/icons/05-add-money_1666160847291.webp"
-                alt="addmoneypng" />
-            </div>
+            class="rounded-lg w-64 bg-white h-40 mt-8 shadow-lg shadow-[#e2136e]-500/50 flex flex-col justify-center items-center">
             <div class="mb-8">
-              <p>অ্যাড মানি</p>
+              <h4
+                class="text-[#50d71e]"
+                style="
+                  font-family: 'Bellefair', serif;
+                  font-weight: 300;
+                  font-size: 32px;
+                ">
+                Incomming
+                <i class="fa-solid fa-angle-down"></i>
+              </h4>
+              <h5
+                id="incomming"
+                style="
+                  font-family: 'Bellefair', serif;
+                  font-weight: 300;
+                  font-size: 28px;
+                  text-align: center;
+                  margin-top: 10px;
+                ">
+                0,000
+              </h5>
             </div>
           </div>
           <!--  -->
+
           <div
-            class="w-64 h-40 mt-8 shadow-lg shadow-[#e2136e]-500/50 flex flex-col justify-center items-center"
-            id="item-2"
-            data-id="2">
-            <div>
-              <img
-                class="w-24"
-                src="https://www.bkash.com/uploaded_contents/services/icons/03-cash-out_1666158620022.webp"
-                alt="addmoneypng" />
-            </div>
+            class="rounded-lg w-64 bg-white h-40 mt-8 shadow-lg shadow-[#e2136e]-500/50 flex flex-col justify-center items-center">
+            <div></div>
             <div class="mb-8">
-              <p>ক্যাশ আউট</p>
+              <h4
+                class="text-pink-700"
+                style="
+                  font-family: 'Bellefair', serif;
+                  font-weight: 300;
+                  font-size: 32px;
+                ">
+                OutGoing
+                <i class="fa-solid fa-angle-up"></i>
+              </h4>
+              <h5
+                id="OutGoing"
+                style="
+                  font-family: 'Bellefair', serif;
+                  font-weight: 300;
+                  font-size: 28px;
+                  text-align: center;
+                  margin-top: 10px;
+                ">
+                0,000
+              </h5>
             </div>
           </div>
           <!--  -->
         </div>
       </div>
     </section>
+    <section>
+      <div class="container mx-auto px-4 pt-3 pb-3">
+        <div class="absolute bottom-[5%] left-[20%]">
+          <div class="flex gap-x-4">
+            <div
+              class="rounded-full cursor-pointer border-2 border-slate-100 flex flex-col justify-center items-center"
+              style="width: 22%; height: 101px"
+              id="item-1"
+              data-id="1">
+              <div>
+                <img
+                  style="width: 40%; display: block; margin: 0 auto"
+                  src="https://www.bkash.com/uploaded_contents/services/icons/05-add-money_1666160847291.webp"
+                  alt="addmoneypng" />
+              </div>
+              <div>
+                <p class="text-white">অ্যাড মানি</p>
+              </div>
+            </div>
+            <!--  -->
+            <div
+              class="rounded-full cursor-pointer border-2 border-slate-100 flex flex-col justify-center items-center"
+              style="width: 22%; height: 101px"
+              id="item-2"
+              data-id="2">
+              <div>
+                <img
+                  style="width: 40%; display: block; margin: 0 auto"
+                  src="https://www.bkash.com/uploaded_contents/services/icons/03-cash-out_1666158620022.webp"
+                  alt="addmoneypng" />
+              </div>
+              <div>
+                <p class="text-white">ক্যাশ আউট</p>
+              </div>
+            </div>
+            <!--  -->
+            <div
+              class="rounded-full cursor-pointer border-2 border-slate-100 flex flex-col justify-center items-center"
+              style="width: 22%; height: 101px"
+              id="item-3"
+              data-id="3">
+              <div>
+                <img
+                  style="width: 40%; display: block; margin: 0 auto"
+                  src="https://www.bkash.com/uploaded_contents/services/icons/02-mobile-recharge_1666155167971.webp"
+                  alt="addmoneypng" />
+              </div>
+              <div>
+                <p
+                  class="text-white"
+                  style="font-family: 'Barlow Condensed', sans-serif">
+                  রিচার্জ
+                </p>
+              </div>
+            </div>
+            <!--  -->
+          </div>
+        </div>
+      </div>
+    </section>
     <section
-      class="modal-class hidden fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+      class="modal-class rounded-lg bg-white hidden fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
       <div
         class="w-80 py-20 flex flex-col items-center shadow-lg shadow-[#e2136e]-500/50">
         <span class="cross">❌</span>
@@ -89,6 +206,39 @@
         <button class="rounded-full mt-4 bg-[#e2136e] py-2 px-14 text-white">
           Submit
         </button>
+      </div>
+    </section>
+    <section>
+      <div class="flex flex-row-reverse mr-20">
+        <div
+          class="absolute bottom-0 left-0 flex place-items-center justify-center rounded-full"
+          style="width: 15%; background: white; aspect-ratio: 1">
+          <a
+            href="#"
+            class="text-black bg-white"
+            style="
+              font-family: 'Bellefair', serif;
+              font-weight: 300;
+              font-size: 32px;
+            "
+            >explore</a
+          >
+        </div>
+        <div
+          class="calculation-output rounded overflow-hidden flex justify-end">
+          <div class="w-96 h-64 mb-3 bg-white opacity-70">
+            <div class="flex justify-center">
+              <ul class="flex gap-x-5 text-2xl">
+                <li class="cursor-pointer hover:underline hover:underline-offset-8">Graph</li>
+                <li class="cursor-pointer hover:underline hover:underline-offset-8">
+                  Calculator
+                </li>
+                <li class="cursor-pointer hover:underline hover:underline-offset-8">Charts</li>
+              </ul>
+            </div>
+            <div></div>
+          </div>
+        </div>
       </div>
     </section>
     <script src="./home.js" type="module"></script>

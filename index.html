@@ -6,44 +6,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bkash Clone Version</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bellefair&display=swap"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;800&family=Barlow:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet" />
   </head>
-  <body
-    class="bg-[#e2136e] h-screen flex flex-wrap justify-center content-center">
+  <!-- flex flex-wrap justify-center content-center -->
+  <body class="bg-[#0B0D17] h-screen">
     <section>
-      <div class="">
-        <div class="flex justify-center mb-3">
-          <img src="./pictures/bkashlogo.png" alt="bkashlogopicture" />
-        </div>
-        <div class="w-96 mb-6">
-          <p class="text-white text-center">
-            বিকাশ-এর আর্থিক সল্যুশনের মাধ্যমে আপনার ব্যবসায়িক লেনদেন করতে পারবেন
-            আরো দ্রুত, সহজে ও নিরাপদে। তাই আরো দক্ষভাবে ব্যবসা পরিচালনা করুন
-            বিকাশ এর মাধ্যমে।
-          </p>
-        </div>
-        <div class="">
-          <form>
-            <input
-              type="text"
-              class="block w-96 h-8 border rounded-xl pt-6 pb-6 mb-6 pl-4 placeholder:text-rose-500 focus:text-xl placeholder:text-xl"
-              placeholder="ব্যবহারকারীর নাম"
-              id="username"
-              name="username"
-              aria-label="username" />
-            <input
-              type="password"
-              class="w-96 h-8 border rounded-xl pt-6 pb-6 mb-6 pl-4 placeholder:text-rose-500 focus:text-xl placeholder:text-xl"
-              placeholder="আপনার পাসওয়ার্ড"
-              id="password"
-              name="password"
-              aria-label="username" />
-            <p class="block text-center text-white mb-3 mx-auto"></p>
-            <button
-              type="submit"
-              class="block mx-auto text-white border-2 py-5 px-8 rounded-full">
-              একাউন্ট ওপেন করুন
-            </button>
-          </form>
+      <div class="w-11/12 pe-8 ps-8 ms-auto me-auto">
+        <div class="mt-4">
+          <div class="flex justify-center mb-3">
+            <h1
+              class="mt-2"
+              style="
+                color: #d0d6f9;
+                font-family: 'Barlow Condensed', sans-serif;
+                font-size: 60px;
+                font-weight: 300;
+              ">
+              U Cash
+            </h1>
+            <!-- <img src="./pictures" alt="bkashlogopicture" /> -->
+          </div>
+          <div class="w-96 mx-auto block mb-6">
+            <p
+              class="text-[#D0D6F9] text-justify text-xl leading-6"
+              style="font-family: 'Barlow Condensed', sans-serif">
+              এর আর্থিক সল্যুশনের মাধ্যমে আপনার ব্যবসায়িক লেনদেন করতে পারবেন আরো
+              দ্রুত, সহজে ও নিরাপদে। তাই আরো দক্ষভাবে
+              <span
+                class="underline text-slate-500 decoration-double decoration-1 underline-offset-8 decoration-[#D0D6F9]">
+                ব্যবসা পরিচালনা</span
+              >
+              করুন U cash এর মাধ্যমে।
+            </p>
+          </div>
+          <div class="">
+            <form>
+              <input
+                type="text"
+                class="mt-3 mx-auto block px-7 pt-6 pb-6 w-8/12 rounded-lg bg-transparent text-white border-2 border-white-600 focus:outline-none placeholder:text-[#D0D6F9] focus:text-xl placeholder:text-xl"
+                placeholder="ব্যবহারকারীর নাম"
+                id="username"
+                name="username"
+                aria-label="username" />
+              <input
+                type="password"
+                class="mt-6 mx-auto block mb-6 px-7 pt-6 pb-6 w-8/12 rounded-lg bg-transparent text-white border-2 border-white-600 placeholder:text-[#D0D6F9] focus:text-xl placeholder:text-xl"
+                placeholder="আপনার পাসওয়ার্ড"
+                id="password"
+                name="password"
+                aria-label="username" />
+              <p class="block text-center text-white mb-3 mx-auto"></p>
+              <button
+                type="submit"
+                class="block mx-auto text-white border-2 py-5 px-8 rounded-full">
+                একাউন্ট ওপেন করুন
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </section>

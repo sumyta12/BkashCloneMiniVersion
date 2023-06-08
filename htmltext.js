@@ -25,7 +25,7 @@ export const loadingHtmlText = (username) => {
 export const notfiyhtmltext =(item) =>{
   const { date, time, taka, text, transictionId } = item;
   return `
-  <div class="w-64 pt-2  bg-white mt-2 mb-2"
+  <div class="w-5/6 rounded-xl  bg-white mx-auto py-2 px-2  mt-2 mb-2"
                 id="delete-${transictionId}"
                 data-deleteId="${transictionId}">
                 <div>
@@ -34,7 +34,7 @@ export const notfiyhtmltext =(item) =>{
                 <div>
                     <div class="flex justify-between">
                     <div><h6>${taka}</h6></div>
-                    <div>
+                    <div class="text-xs text-amber-700">
                     <p>${date}</p>
                     <span>${time}</span>
                     </div>

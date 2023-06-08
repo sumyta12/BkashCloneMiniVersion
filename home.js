@@ -1,4 +1,4 @@
-import { errorMessage, dateTimeReturen } from "./constant.js";
+import { errorMessage, dateTimeReturen, emojiResturn } from "./constant.js";
 import { notfiyhtmltext } from "./htmltext.js";
 import UserDetails from "./UserDetails.js";
 const mainbalance = document.querySelector(".main-balance");
@@ -23,6 +23,22 @@ let total = displayOutputpinReturn()[1];
 let track = false;
 const notificationArr = [];
 
+function arrayFilForInOut(notificationArr) {
+  let cashArr = 0;
+  let inArr = 0;
+
+  notificationArr.forEach((eachItem) => {
+    if (eachItem.text === "ক্যাশ আউট") {
+      cashArr = cashArr + eachItem.taka;
+    } else {
+      inArr = inArr + eachItem.taka;
+    }
+  });
+  document.getElementById("incomming").textContent = inArr;
+  document.getElementById("OutGoing").textContent = cashArr;
+  return true;
+}
+
 function displayOneNotifyItem(item) {
   return notfiyhtmltext(item);
 }
@@ -33,7 +49,7 @@ function notifactionDisplayOutput(displayarr) {
     text += displayOneNotifyItem(item);
   }
   document.querySelector("#notification-slider").children[0].innerHTML =
-    `<h1 class="text-center">Notification</h1>` + text;
+    `<h1 class="text-center text-white">Notification</h1>` + text;
 }
 
 document.addEventListener("click", (e) => {
@@ -49,7 +65,7 @@ document.addEventListener("click", (e) => {
   } else if (e.target.className === "cross") {
     inputValue.style.display = "block";
     modalbtn.setAttribute("style", "background:;");
-    document.querySelector("i").style.display = "none";
+    document.querySelector(".modal-class i").style.display = "none";
     fullModal.style.display = "none";
   } else if (e.target.tagName.toLowerCase() === "button") {
     buttonActivityChange(e);
@@ -76,9 +92,9 @@ function buttonActivityChange(e) {
     const parent = document.querySelector(`#item-${id}`).parentElement;
 
     parent.setAttribute("style", "cursor:not-allowed ;");
-    for (let child of parent.children) {
-      child.setAttribute("style", "pointer-events:none;");
-    }
+    // for (let child of parent.children) {
+    //   child.setAttribute("style", "pointer-events:none;");
+    // }
 
     textContentChange("none", "block", `Give Your Pin Number`, "proceesing");
 
@@ -89,15 +105,17 @@ function buttonActivityChange(e) {
 
         modalptag.textContent = ``;
 
-        document.querySelector("i").style.display = "block";
+        document.querySelector(".modal-class i").style.display = "block";
         parent.setAttribute("style", "cursor:pointer ;");
-        for (let child of parent.children) {
-          child.setAttribute("style", "pointer-events:auto;");
-        }
+        // for (let child of parent.children) {
+        //   child.setAttribute("style", "pointer-events:auto;");
+        // }
         modalbtn.setAttribute("style", "background: transparent");
         const amountReturen = addSubstractionOutput(id, input);
 
         notficationArrayCreate(input);
+
+        arrayFilForInOut(notificationArr);
         notifactionDisplayOutput(notificationArr);
 
         totalAmountUpdate(amountReturen);
@@ -160,7 +178,9 @@ function inputValueCheck(id, number) {
 }
 
 function totalAmountUpdate(total) {
-  return (mainbalance.textContent = total);
+  document.querySelector(".level-el").textContent =
+    "you get " + emojiResturn(total);
+  return (mainbalance.textContent = "Balance : " + total);
 }
 
 function getAccurateUser() {
@@ -185,7 +205,21 @@ function displayOutput() {
   const mainbalance = document.querySelector(".main-balance");
 
   nameofuser.textContent = userData.username;
-  mainbalance.textContent = userData.balance;
+  mainbalance.textContent = "Balance : " + userData.balance;
 
   return [parseInt(userData.balance), userData.pin];
 }
+
+document
+  .querySelector(".bird-click-notification")
+  .addEventListener("click", function (e) {
+    const notificationslider = document.getElementById('notification-slider');
+    if(notificationslider.classList[0] === 'hidden'){
+        notificationslider.classList.remove('hidden');
+        notificationslider.classList.add('block');
+    }
+   else{
+    notificationslider.classList.add('hidden');
+        notificationslider.classList.remove('block');
+   }
+});
