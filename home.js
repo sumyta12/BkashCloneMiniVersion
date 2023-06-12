@@ -213,13 +213,13 @@ function displayOutput() {
 document
   .querySelector(".bird-click-notification")
   .addEventListener("click", function (e) {
-    const notificationslider = document.getElementById('notification-slider');
-    if(notificationslider.classList[0] === 'hidden'){
-        notificationslider.classList.remove('hidden');
-        notificationslider.classList.add('block');
+    const notificationslider = document.getElementById("notification-slider");
+    if (notificationslider.classList[0] === "hidden") {
+      notificationslider.classList.remove("hidden");
+      notificationslider.classList.add("block");
+    } else {
+      notificationslider.classList.add("hidden");
+      notificationslider.classList.remove("block");
     }
-   else{
-    notificationslider.classList.add('hidden');
-        notificationslider.classList.remove('block');
-   }
-});
+  });
+
